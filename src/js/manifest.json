@@ -40,7 +40,7 @@
       "sizes": "172x172",
       "type": "image/png"
     }],
-    "start_url": "https://insighter-pwa.netlify.app/home.html",
+    "start_url": "https://tourmaline-moxie-f7df46.netlify.app",
     "display_override": ["fullscreen", "minimal-ui"],
     "display": "standalone",
     "background_color": "#ffffff",
@@ -55,7 +55,7 @@
         "name": "Insighter",
         "short_name": "Insighter",
         "description": "View the list of your machines",
-        "url": "https://insighter-pwa.netlify.app/home.html",
+        "url": "https://tourmaline-moxie-f7df46.netlify.app",
         "icons": [{ "src": "/assets/Icon/196.png",
          "sizes": "196x196" }
         ]
