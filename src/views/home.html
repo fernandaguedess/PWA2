@@ -90,16 +90,17 @@
             </div>
          </div>
       </a>
-      <div class="wrapper-content">
+      <!-- <div class="wrapper-content">
          <div class="wrapper">
             <h1>Contador</h1>
             <div id="chart-area-temp-home">
             </div>
          </div>
-      </div>
-      <div class="home_alerta">
+      </div> -->
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-       <div id="piechart" style="width: 400px; height: 300px;"></div>
+      <div class="charts">
+         <div id="piechart" style="width: 800px;"></div>
+         <div id="piechart2" style="width: 800px;"></div>
       </div>
       <script>
     google.charts.load('current', {'packages':['corechart']});
@@ -109,15 +110,14 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['Sem Anomalias',     11],
+          ['Com Anomalias',      2],
+          ['Manutenção',      2],
+          
         ]);
 
         var options = {
-          title: 'My Daily Activities'
+          title: 'Registro de Anomalias'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -125,6 +125,29 @@
         chart.draw(data, options);
       }
       </script>
+        <script>
+         google.charts.load('current', {'packages':['corechart']});
+           google.charts.setOnLoadCallback(drawChart);
+     
+           function drawChart() {
+     
+             var data = google.visualization.arrayToDataTable([
+               ['Task', 'Hours per Day'],
+               ['Cadastradas',     11],
+               ['Editadas',      4],
+               ['Excluidas',      2],
+               
+             ]);
+     
+             var options = {
+               title: 'Máquinas'
+             };
+     
+             var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+     
+             chart.draw(data, options);
+           }
+           </script>
 
       <script src='https://cdn.jsdelivr.net/npm/apexcharts'></script>
       <script src="js/chart_script.js"></script>

@@ -53,15 +53,15 @@ self.addEventListener('install', event => {
         './assets/images/logo-login.png',
         './assets/images/profile_pic.png',
        
-        './assets/Icon/64.png',
-        './assets/Icon/128.png',
-        './assets/Icon/144.png',
-        './assets/Icon/152.png',
-        './assets/Icon/167.png',
-        './assets/Icon/180.png',
-        './assets/Icon/196.png',
-        './assets/Icon/512.png',
-        './assets/Icon/1024.png'
+        './assets/AppIcons/64.png',
+        './assets/AppIcons/128.png',
+        './assets/AppIcons/144.png',
+        './assets/AppIcons/152.png',
+        './assets/AppIcons/167.png',
+        './assets/AppIcons/180.png',
+        './assets/AppIcons/196.png',
+        './assets/AppIcons/512.png',
+        './assets/AppIcons/1024.png'
       ]))
   );
 });

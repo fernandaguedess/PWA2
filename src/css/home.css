@@ -62,7 +62,7 @@
   }
   
   a .home_alerta p {
-    font-family: 'Zen Maru Gothic';
+    font-family: sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -129,3 +129,8 @@
     
   }
   
+  .charts{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
