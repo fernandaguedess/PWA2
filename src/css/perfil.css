@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: 'Zen Maru Gothic';
+    font-family: sans-serif;
     font-style: normal;
     font-weight: 700;
   }
@@ -156,7 +156,7 @@
   }
   
   .titulo_pagina h1 {
-    font-family: 'Zen Maru Gothic';
+    font-family: sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -179,7 +179,7 @@
   }
   
   .item h3 {
-    font-family: 'Zen Maru Gothic';
+    font-family: sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -197,7 +197,7 @@
   }
   
   .item_sair h3 {
-    font-family: 'Zen Maru Gothic';
+    font-family: sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;

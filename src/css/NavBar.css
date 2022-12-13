@@ -21,7 +21,7 @@
  
   
   .navbar {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     display: flex;
@@ -32,12 +32,13 @@
     width: 100%;
   }
   
-  .navbar img {
+  .navbar svg {
     display: none;
     flex: 2 1 auto;
     font-weight: 500;
     font-size: 16px;
     margin: 0 0 0 16px;
+    width: 1em;
   }
   
   @media (width >= 440px) {
@@ -51,7 +52,7 @@
       width: 200px;
     }
   
-    .navbar img {
+    .navbar svg {
       display: block;
     }
   }
@@ -70,7 +71,7 @@
     font-weight: 400;
   }
   
-  a {
+  a{
     position: relative;
     z-index: 2;
     padding: 20px;
