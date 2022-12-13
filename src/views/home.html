@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="theme-color" content="#fff" />
    <link rel="apple-touch-icon" href="/assets/Icon/180.png">
-   <link rel="manifest" href="manifest.json" />
+   <link rel="manifest" href="/src/js/manifest.json" />
    <title>Insighter - Home</title>
    <link rel="stylesheet" href="/src/css/home.css">
    <link rel="stylesheet" href="/src/css/NavBar.css">
@@ -16,6 +16,56 @@
    <link rel="shortcut icon" href="/assets/Icon/180.png" type="image/x-icon" />
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
    rel="stylesheet">
+   <script>
+      function fazGetAnomalias() {
+         fetch(
+            "https://api-insighter-postgresql-rkym.vercel.app/logmaquinas",
+            {
+              method: "GET",
+              body: JSON.stringify(),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+         )
+         .then((response) => response.json())
+         .then((data) => {
+            console.log("Success:", data);
+            document.getElementById("quantidade_anomalia").innerHTML = `${Object.keys(data).length} anomalia encontrada! <br>Clique para saber mais`
+         })
+         .catch((error) => {
+            console.error("Error:", error);
+            window.location.href = "./login.html";
+         });
+      }
+
+      function fazGetIndustria() {
+         fetch(
+            "https://api-insighter-postgresql-rkym.vercel.app/industrias",
+            {
+              method: "GET",
+              body: JSON.stringify(),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+         )
+         .then((response) => response.json())
+         .then((data) => {
+            console.log("Success:", data);
+            document.getElementById("nome_industria").innerHTML = `Bem vindo, ${data[0].nome}!`
+         })
+         .catch((error) => {
+            console.error("Error:", error);
+            window.location.href = "./login.html";
+         });
+      }
+
+      fazGetAnomalias();
+      fazGetIndustria();
+   </script>
 </head>
 
 <body>
@@ -63,8 +113,8 @@
 
    <div class="home_corpo">
       <div class="home_mensagem">
-         <h1>
-            Bem vindo, Weslley!
+         <h1 id="nome_industria">
+            
          </h1>
       </div>
 
@@ -83,9 +133,8 @@
                      </linearGradient>
                   </defs>
                </svg>
-               <p>
-                  01 anomalia encontrada! <br>
-                  Clique para saber mais
+               <p id="quantidade_anomalia">
+                  
                </p>
             </div>
          </div>

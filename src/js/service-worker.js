@@ -36,22 +36,16 @@ self.addEventListener('install', event => {
         '/assets/css/style.css',
 
         //pasta JS
-        './js/api_call.js',
-        './js/chart_script.js',
-        './js/home.js',
-        './js/script.js',
+        //'./js/api_call.js',
+        //'./js/chart_script.js',
+        //'./js/home.js',
+        //'./js/script.js',
 
         //Imagens
-        './assets/images/add_button.svg',
-        './assets/images/Bell.svg',
-        './assets/images/delete_button.svg',
-        './assets/images/edit_button.svg',
-        './assets/images/Emergency Exit.svg',
-        './assets/images/Info.svg',
-        './assets/images/Lock.svg',
-        './assets/images/logo_insighter.svg',
-        './assets/images/logo-login.png',
-        './assets/images/profile_pic.png',
+        './assets/images/background.png',
+        './assets/images/logo.png',
+        './assets/images/logoEye.png',
+        
        
         './assets/Icon/64.png',
         './assets/Icon/128.png',

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/src/css/Login.css">
+    <link rel="manifest" href="/src/js/manifest.json" />
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet">
 </head>
@@ -74,6 +76,7 @@
             .then((data) => {
               console.log("Success:", data);
               localStorage.setItem('token', data.token);
+              window.location.href = "./home.html";
             })
             .catch((error) => {
               console.error("Error:", error);
