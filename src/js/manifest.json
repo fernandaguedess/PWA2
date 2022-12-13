@@ -4,39 +4,39 @@
     "lang": "pt-br",
     "description": "O Melhor App!",
     "icons": [{
-      "src":"/assets/Icon/1024.png",
+      "src":"/src/assets/Icon/1024.png",
       "sizes": "1024x1024",
       "type": "image/png"
      },
     {
-      "src":"/assets/Icon/512.png",
+      "src":"/src/assets/Icon/512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose" : "maskable"
     },
     {
-      "src":"/assets/Icon/256.png",
+      "src":"/src/assets/Icon/256.png",
       "sizes": "256x256",
       "type": "image/png",
       "purpose" : "any"
     },
     {
-      "src":"/assets/Icon/216.png",
+      "src":"/src/assets/Icon/216.png",
       "sizes": "216x216",
       "type": "image/png"
     },
     {
-      "src":"/assets/Icon/196.png",
+      "src":"/src/assets/Icon/196.png",
       "sizes": "196x196",
       "type": "image/png"
     },
     {
-      "src":"/assets/Icon/180.png",
+      "src":"/src/assets/Icon/180.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src":"/assets/Icon/172.png",
+      "src":"/src/assets/Icon/172.png",
       "sizes": "172x172",
       "type": "image/png"
     }],
@@ -56,7 +56,7 @@
         "short_name": "Insighter",
         "description": "View the list of your machines",
         "url": "https://tourmaline-moxie-f7df46.netlify.app",
-        "icons": [{ "src": "/assets/Icon/196.png",
+        "icons": [{ "src": "/src/assets/Icon/196.png",
          "sizes": "196x196" }
         ]
       }
@@ -64,14 +64,14 @@
     
     "screenshots" : [
       {
-        "src": "/assets/Icon/1024.png",
+        "src": "/src/assets/Icon/1024.png",
         "sizes": "1024x1024",
         "type": "image/png",
         "platform": "wide",
         "label": "Homescreen of Awesome App"
       },
       {
-        "src": "/assets/Icon/1024.png",
+        "src": "/src/assets/Icon/1024.png",
         "sizes": "1024x1024",
         "type": "image/png",
         "platform": "wide",

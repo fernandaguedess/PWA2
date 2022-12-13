@@ -32,7 +32,7 @@
          .then((response) => response.json())
          .then((data) => {
             console.log("Success:", data);
-            document.getElementById("quantidade_anomalia").innerHTML = `${Object.keys(data).length} anomalia encontrada! <br>Clique para saber mais`
+            document.getElementById("quantidade_anomalia").innerHTML = `${Object.keys(data).length} anomalias encontradas! <br>Clique para saber mais`
          })
          .catch((error) => {
             console.error("Error:", error);
@@ -223,7 +223,7 @@
          let newWorker;
 
          if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./service-worker.js').then(reg => {
+            navigator.serviceWorker.register('./src/js/service-worker.js').then(reg => {
                reg.addEventListener('updatefound', () => {
                   // A wild service worker has appeared in reg.installing!
                   newWorker = reg.installing;

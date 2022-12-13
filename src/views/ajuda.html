@@ -83,29 +83,29 @@
         const el = document.createElement('pwa-update');
         document.body.appendChild(el);
 
-    </script>
+     </script>
 
-    <script>
+     <script>
         let newWorker;
 
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./service-worker.js').then(reg => {
-                reg.addEventListener('updatefound', () => {
-                    // A wild service worker has appeared in reg.installing!
-                    newWorker = reg.installing;
-                    newWorker.addEventListener('statechange', () => {
+           navigator.serviceWorker.register('./src/js/service-worker.js').then(reg => {
+              reg.addEventListener('updatefound', () => {
+                 // A wild service worker has appeared in reg.installing!
+                 newWorker = reg.installing;
+                 newWorker.addEventListener('statechange', () => {
 
-                    });
-                });
-            });
-            let refreshing;
-            navigator.serviceWorker.addEventListener('controllerchange', function () {
-                if (refreshing) return;
-                window.location.reload();
-                refreshing = true;
-            });
+                 });
+              });
+           });
+           let refreshing;
+           navigator.serviceWorker.addEventListener('controllerchange', function () {
+              if (refreshing) return;
+              window.location.reload();
+              refreshing = true;
+           });
         }
-    </script>
+     </script>
     <script>
         const toggleMenuOpen = () => {
            document.body.classList.toggle("open");

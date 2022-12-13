@@ -16,6 +16,79 @@
   <link rel="shortcut icon" href="/assets/Icon/180.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
   rel="stylesheet">
+  <script>
+    function fazGetMaquinas() {
+       fetch(
+          "https://api-insighter-postgresql-rkym.vercel.app/maquinas",
+          {
+            method: "GET",
+            body: JSON.stringify(),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+       )
+       .then((response) => response.json())
+       .then((data) => {
+          console.log("Success:", data);
+          const html = data.map(res => {
+          return ` 
+          <div class="item" id=${res.id} onclick="goToMachinePage(${res.id})">
+              <div class="maquina">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.5159 3.57143L17.5057 6.44048V6.65476L20.5159 9.52381H25V11.9048H19.4917L17.5057 10.0119V13.0952H16.2567C15.5941 13.0952 14.9587 12.8444 14.4902 12.3979C14.0218 11.9514 13.7586 11.3458 13.7586 10.7143V7.7381H9.83656C9.72414 8.17857 9.53679 8.59524 9.28698 8.9881L16.4815 21.4286H22.5019C23.1644 21.4286 23.7998 21.6794 24.2683 22.1259C24.7368 22.5725 25 23.1781 25 23.8095V25H0.0190417V23.8095C0.0190417 23.1781 0.282233 22.5725 0.750717 22.1259C1.2192 21.6794 1.8546 21.4286 2.51714 21.4286H10.7733L4.91531 11.3095C3.82153 11.2919 2.76396 10.9331 1.90448 10.2881C1.04501 9.64306 0.430993 8.74736 0.156437 7.7381C-0.00668582 7.1315 -0.0426765 6.50019 0.050525 5.88031C0.143726 5.26044 0.36429 4.66418 0.699588 4.12565C1.03489 3.58713 1.47833 3.11693 2.00454 2.74197C2.53075 2.367 3.12939 2.09464 3.76619 1.94048C6.42666 1.28571 9.14958 2.80952 9.83656 5.35714H13.7586V2.38095C13.7586 1.74948 14.0218 1.14388 14.4902 0.697365C14.9587 0.25085 15.5941 0 16.2567 0H17.5057V3.08333L19.4917 1.19048H25V3.57143H20.5159ZM5.01523 4.16667C4.3527 4.16667 3.7173 4.41752 3.24881 4.86403C2.78033 5.31055 2.51714 5.91615 2.51714 6.54762C2.51714 7.17909 2.78033 7.78469 3.24881 8.23121C3.7173 8.67772 4.3527 8.92857 5.01523 8.92857C5.67777 8.92857 6.31317 8.67772 6.78165 8.23121C7.25014 7.78469 7.51333 7.17909 7.51333 6.54762C7.51333 5.91615 7.25014 5.31055 6.78165 4.86403C6.31317 4.41752 5.67777 4.16667 5.01523 4.16667Z"
+                    fill="url(#paint0_linear_405_172)"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_405_172"
+                      x1="-2.17315"
+                      y1="-1.62779"
+                      x2="27.5584"
+                      y2="28.9549"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#3540E6" />
+                      <stop offset="1" stop-color="#3540E6" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <h3>${res.nome_maquina}</h3>
+              </div>
+              <div class="seta">
+                <svg
+                  width="11"
+                  height="21"
+                  viewBox="0 0 11 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.3335 10.5C10.3341 10.8408 10.2154 11.171 9.99804 11.4334L2.70637 20.1834C2.45883 20.4812 2.10313 20.6685 1.71751 20.704C1.33188 20.7396 0.947933 20.6205 0.650117 20.373C0.352301 20.1254 0.165016 19.7697 0.129462 19.3841C0.0939081 18.9985 0.212998 18.6145 0.460533 18.3167L6.99387 10.5L0.693867 2.68338C0.572729 2.53421 0.482266 2.36257 0.427678 2.17832C0.37309 1.99408 0.355453 1.80086 0.375781 1.60978C0.396109 1.4187 0.454 1.23352 0.546129 1.06488C0.638258 0.896242 0.762807 0.747475 0.912616 0.627129C1.06256 0.493575 1.23848 0.392427 1.42934 0.330021C1.62019 0.267615 1.82188 0.245298 2.02177 0.264465C2.22165 0.283632 2.41542 0.34387 2.59094 0.441408C2.76646 0.538946 2.91995 0.671682 3.04178 0.831298L10.0855 9.5813C10.2686 9.85121 10.3559 10.1747 10.3335 10.5V10.5Z"
+                    fill="#3540E6"
+                  />
+                </svg>
+              </div>
+            </div>`;
+        }).join('');
+        document.querySelector('#conteudo').insertAdjacentHTML('afterbegin', html);
+       })
+       .catch((error) => {
+          console.error("Error:", error);
+          window.location.href = "./login.html";
+       });
+    }
+
+    fazGetMaquinas();
+ </script>
 </head>
 
 <body>
@@ -92,13 +165,19 @@
       window.location.replace('/maquina_dash.html?machineId=' + machineId);
     }
     function fetchData() {
-      fetch("https://retoolapi.dev/2PlLEF/data").then(response => {
-        if (!response.ok) {
-          throw Error("OOPS, SOMETHING WENT WRONG. FETCH FAILED. :(");
-        }
-        return response.json();
-      }).then(data => {
-        console.log(data.data);
+        fetch(
+          "https://api-insighter-postgresql-rkym.vercel.app/logmaquinas",
+          {
+            method: "GET",
+            body: JSON.stringify(),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+       )
+       .then(data => {
+        console.log(data);
         const html = data.map(res => {
           return ` 
             <div class="item" id=${res.id} onclick="goToMachinePage(${res.id})">

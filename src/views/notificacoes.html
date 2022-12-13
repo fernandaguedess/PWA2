@@ -17,6 +17,73 @@
   <link rel="shortcut icon" href="/assets/Icon/180.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
   rel="stylesheet">
+  <script>
+    function fazGetAnomalias() {
+       fetch(
+          "https://api-insighter-postgresql-rkym.vercel.app/logmaquinas",
+          {
+            method: "GET",
+            body: JSON.stringify(),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+       )
+       .then((response) => response.json())
+       .then((data) => {
+          console.log("Success:", data);
+          const html = data.map(res => {
+          return ` 
+          <a href="dashmaquinas.html?machineId=${res.id_maquina}">
+          <div class="item">
+            <div class="sub_item_1">
+              <div>
+                <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.6232 1.96329C16.3407 1.37528 15.8977 0.879 15.3452 0.531647C14.7927 0.184294 14.1532 0 13.5005 0C12.8478 0 12.2083 0.184294 11.6559 0.531647C11.1034 0.879 10.6603 1.37528 10.3778 1.96329L0.411595 21.555C-0.780763 23.894 0.725955 27 3.53309 27H23.4667C26.2751 27 27.7793 23.8953 26.5894 21.555L16.6232 1.96329ZM13.5005 8.59246C13.8262 8.59246 14.1385 8.72175 14.3688 8.95189C14.5991 9.18203 14.7285 9.49417 14.7285 9.81963V15.9555C14.7285 16.2809 14.5991 16.5931 14.3688 16.8232C14.1385 17.0534 13.8262 17.1826 13.5005 17.1826C13.1748 17.1826 12.8625 17.0534 12.6322 16.8232C12.4019 16.5931 12.2725 16.2809 12.2725 15.9555V9.81963C12.2725 9.49417 12.4019 9.18203 12.6322 8.95189C12.8625 8.72175 13.1748 8.59246 13.5005 8.59246V8.59246ZM13.5005 19.0234C13.8262 19.0234 14.1385 19.1527 14.3688 19.3828C14.5991 19.613 14.7285 19.9251 14.7285 20.2506V20.8642C14.7285 21.1896 14.5991 21.5018 14.3688 21.7319C14.1385 21.962 13.8262 22.0913 13.5005 22.0913C13.1748 22.0913 12.8625 21.962 12.6322 21.7319C12.4019 21.5018 12.2725 21.1896 12.2725 20.8642V20.2506C12.2725 19.9251 12.4019 19.613 12.6322 19.3828C12.8625 19.1527 13.1748 19.0234 13.5005 19.0234V19.0234Z"
+                    fill="url(#paint0_linear_560_110)" fill-opacity="0.82" />
+                  <defs>
+                    <linearGradient id="paint0_linear_560_110" x1="-8.06381" y1="-2.3024" x2="23.9076" y2="22.5006"
+                      gradientUnits="userSpaceOnUse">
+                      <stop offset="0.505208" stop-color="#EC2F2F" />
+                      <stop offset="1" stop-color="#A70000" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <h3>
+                  Alerta - Máquina ${res.nome}
+                </h3>
+              </div>
+              
+              <svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10.3335 10.5C10.3341 10.8408 10.2154 11.171 9.99804 11.4334L2.70637 20.1834C2.45883 20.4812 2.10313 20.6685 1.71751 20.704C1.33188 20.7396 0.947933 20.6205 0.650117 20.373C0.352301 20.1254 0.165016 19.7697 0.129462 19.3841C0.0939081 18.9985 0.212998 18.6145 0.460533 18.3167L6.99387 10.5L0.693867 2.68338C0.572729 2.53421 0.482266 2.36257 0.427678 2.17832C0.37309 1.99408 0.355453 1.80086 0.375781 1.60978C0.396109 1.4187 0.454 1.23352 0.546129 1.06488C0.638258 0.896242 0.762807 0.747475 0.912616 0.627129C1.06256 0.493575 1.23848 0.392427 1.42934 0.330021C1.62019 0.267615 1.82188 0.245298 2.02177 0.264465C2.22165 0.283632 2.41542 0.34387 2.59094 0.441408C2.76646 0.538946 2.91995 0.671682 3.04178 0.831298L10.0855 9.5813C10.2686 9.85121 10.3559 10.1747 10.3335 10.5V10.5Z"
+                  fill="#3540E6" />
+              </svg>
+            </div>
+            <div class="sub_item_2">
+              <h3>
+                <!-- ${res.sensor}-->
+                Sensor ultrapassou o limite estipulado.
+              </h3>
+              <h4>
+                Clique para saber mais
+              </h4>
+            </div>
+          </div>
+        </a>`;
+        }).join('');
+        document.querySelector('#conteudo').insertAdjacentHTML('afterbegin', html);
+       })
+       .catch((error) => {
+          console.error("Error:", error);
+          window.location.href = "./login.html";
+       });
+    }
+
+    fazGetAnomalias();
+ </script>
 </head>
 
 <body>
@@ -68,42 +135,7 @@
       </div>
     </div>
     <div class="mid">
-      <a href="dashmaquinas.html?machineId=3">
-        <div class="item">
-          <div class="sub_item_1">
-            <div>
-              <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M16.6232 1.96329C16.3407 1.37528 15.8977 0.879 15.3452 0.531647C14.7927 0.184294 14.1532 0 13.5005 0C12.8478 0 12.2083 0.184294 11.6559 0.531647C11.1034 0.879 10.6603 1.37528 10.3778 1.96329L0.411595 21.555C-0.780763 23.894 0.725955 27 3.53309 27H23.4667C26.2751 27 27.7793 23.8953 26.5894 21.555L16.6232 1.96329ZM13.5005 8.59246C13.8262 8.59246 14.1385 8.72175 14.3688 8.95189C14.5991 9.18203 14.7285 9.49417 14.7285 9.81963V15.9555C14.7285 16.2809 14.5991 16.5931 14.3688 16.8232C14.1385 17.0534 13.8262 17.1826 13.5005 17.1826C13.1748 17.1826 12.8625 17.0534 12.6322 16.8232C12.4019 16.5931 12.2725 16.2809 12.2725 15.9555V9.81963C12.2725 9.49417 12.4019 9.18203 12.6322 8.95189C12.8625 8.72175 13.1748 8.59246 13.5005 8.59246V8.59246ZM13.5005 19.0234C13.8262 19.0234 14.1385 19.1527 14.3688 19.3828C14.5991 19.613 14.7285 19.9251 14.7285 20.2506V20.8642C14.7285 21.1896 14.5991 21.5018 14.3688 21.7319C14.1385 21.962 13.8262 22.0913 13.5005 22.0913C13.1748 22.0913 12.8625 21.962 12.6322 21.7319C12.4019 21.5018 12.2725 21.1896 12.2725 20.8642V20.2506C12.2725 19.9251 12.4019 19.613 12.6322 19.3828C12.8625 19.1527 13.1748 19.0234 13.5005 19.0234V19.0234Z"
-                  fill="url(#paint0_linear_560_110)" fill-opacity="0.82" />
-                <defs>
-                  <linearGradient id="paint0_linear_560_110" x1="-8.06381" y1="-2.3024" x2="23.9076" y2="22.5006"
-                    gradientUnits="userSpaceOnUse">
-                    <stop offset="0.505208" stop-color="#EC2F2F" />
-                    <stop offset="1" stop-color="#A70000" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <h3>
-                Alerta - Máquina Extrusora
-              </h3>
-            </div>
-            <svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M10.3335 10.5C10.3341 10.8408 10.2154 11.171 9.99804 11.4334L2.70637 20.1834C2.45883 20.4812 2.10313 20.6685 1.71751 20.704C1.33188 20.7396 0.947933 20.6205 0.650117 20.373C0.352301 20.1254 0.165016 19.7697 0.129462 19.3841C0.0939081 18.9985 0.212998 18.6145 0.460533 18.3167L6.99387 10.5L0.693867 2.68338C0.572729 2.53421 0.482266 2.36257 0.427678 2.17832C0.37309 1.99408 0.355453 1.80086 0.375781 1.60978C0.396109 1.4187 0.454 1.23352 0.546129 1.06488C0.638258 0.896242 0.762807 0.747475 0.912616 0.627129C1.06256 0.493575 1.23848 0.392427 1.42934 0.330021C1.62019 0.267615 1.82188 0.245298 2.02177 0.264465C2.22165 0.283632 2.41542 0.34387 2.59094 0.441408C2.76646 0.538946 2.91995 0.671682 3.04178 0.831298L10.0855 9.5813C10.2686 9.85121 10.3559 10.1747 10.3335 10.5V10.5Z"
-                fill="#3540E6" />
-            </svg>
-          </div>
-          <div class="sub_item_2">
-            <h3>
-              A temperatura ultrapassou o limite estipulado.
-            </h3>
-            <h4>
-              Clique para saber mais
-            </h4>
-          </div>
-        </div>
-      </a>
+      <div id="conteudo"></div>
     </div>
     <!--<footer>
       <a href="home.html">
@@ -172,35 +204,35 @@
   </script>
 
 
-  <script typr="module">
-    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+<script typr="module">
+  import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
 
-    const el = document.createElement('pwa-update');
-    document.body.appendChild(el);
+  const el = document.createElement('pwa-update');
+  document.body.appendChild(el);
 
-  </script>
+</script>
 
-  <script>
-    let newWorker;
+<script>
+  let newWorker;
 
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./service-worker.js').then(reg => {
+  if ('serviceWorker' in navigator) {
+     navigator.serviceWorker.register('./src/js/service-worker.js').then(reg => {
         reg.addEventListener('updatefound', () => {
-          // A wild service worker has appeared in reg.installing!
-          newWorker = reg.installing;
-          newWorker.addEventListener('statechange', () => {
+           // A wild service worker has appeared in reg.installing!
+           newWorker = reg.installing;
+           newWorker.addEventListener('statechange', () => {
 
-          });
+           });
         });
-      });
-      let refreshing;
-      navigator.serviceWorker.addEventListener('controllerchange', function () {
+     });
+     let refreshing;
+     navigator.serviceWorker.addEventListener('controllerchange', function () {
         if (refreshing) return;
         window.location.reload();
         refreshing = true;
-      });
-    }
-  </script>
+     });
+  }
+</script>
 </body>
 
 </html>
